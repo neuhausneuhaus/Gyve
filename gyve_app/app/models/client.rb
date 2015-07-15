@@ -19,4 +19,8 @@ class Client < ActiveRecord::Base
   has_many :goals
   has_many :donations
   has_many :destinations
+
+  def name
+    "#{f_name} #{l_name}"
+  end
 end

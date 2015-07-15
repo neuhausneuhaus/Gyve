@@ -21,7 +21,7 @@ cw4 = Caseworker.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.la
 # Donors
 
 donor1 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:"donor@gmail.com", password:"password1", password_confirmation:"password1", funds_remaining:100.00, funds_spent:20.25)
-donor2 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:FFaker::Internet.email, password:"password2", password_confirmation:"password2", funds_remaining:200.00)
+donor2 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:FFaker::Internet.email, password:"password2", password_confirmation:"password2", funds_remaining:195.00, funds_spent:5.00)
 donor3 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:FFaker::Internet.email, password:"password3", password_confirmation:"password3", funds_remaining:75.25)
 donor4 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:FFaker::Internet.email, password:"password4", password_confirmation:"password4", funds_remaining:20.00)
 donor5 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_name, email:FFaker::Internet.email, password:"password5", password_confirmation:"password5", funds_remaining:29.00)
@@ -30,12 +30,12 @@ donor7 = Donor.create(f_name:FFaker::Name.first_name, l_name:FFaker::Name.last_n
 
 # Clients
 
-client1 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw1)
-client2 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw1)
-client3 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw1)
-client4 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw2)
-client5 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw2)
-client6 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs, zip: FFaker::AddressUS.zip_code, caseworker: cw3)
+client1 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw1)
+client2 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw1)
+client3 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw1)
+client4 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw2)
+client5 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw2)
+client6 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.last_name, gender: 'Male', client_alias: FFaker::Name.name, about: FFaker::HealthcareIpsum.paragraphs.join("\n\n"), zip: FFaker::AddressUS.zip_code, caseworker: cw3)
 
 # Goals
 
@@ -63,4 +63,5 @@ c2d3 = client2.destinations.create(destination: "Work")
 
 Donation.create(donor: donor1, client: client1, goal:c1g1, amount: 10.00)
 Donation.create(donor: donor1, client: client1, goal:c1g2, amount: 4.25)
-Donation.create(donor: donor1, client: client3, goal:c1g2, amount: 6.00)
+Donation.create(donor: donor1, client: client3, goal:c3g1, amount: 6.00)
+Donation.create(donor: donor2, client: client1, goal:c1g1, amount: 5.00)

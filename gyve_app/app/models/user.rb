@@ -18,4 +18,8 @@
 class User < ActiveRecord::Base
   validates :email, uniqueness: true
   has_secure_password  
+
+  def name
+    "#{f_name} #{l_name}"
+  end
 end
