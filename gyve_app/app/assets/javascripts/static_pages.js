@@ -3,7 +3,8 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-// ========= About Page ===========
+//========= About Page ===========
+  //---Scrolling link paragraphs---
 
 (function (jQuery) {
   jQuery.mark = {
@@ -34,3 +35,7 @@
 jQuery(function(){  
   jQuery.mark.jump();
 });
+
+  //---Fade in Box---
+
+

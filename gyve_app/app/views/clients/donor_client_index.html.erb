@@ -1,0 +1,42 @@
+<h1>Donor Dashboard</h1>
+<p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
+<p><i>Wallet: $<%=current_user.funds_remaining%></i></p>
+<p><i>Donated: $<%=current_user.funds_spent%></i></p>
+
+
+<table class="table-minimal">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Progress</th>
+      <th>-</th>
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row 1 Cell 1</td>
+      <td>Row 1 Cell 2</td>
+      <td></td>
+      <td><button>Confirm</button><button>Reject</button></td>
+    </tr>
+    <tr>
+      <td>Row 2 Cell 1</td>
+      <td>Row 2 Cell 2</td>
+      <td></td>
+      <td><button>Confirm</button><button>Reject</button></td>
+    </tr>
+    <tr>
+      <td>Row 3 Cell 1</td>
+      <td>Row 3 Cell 2</td>
+      <td></td>
+      <td><button>Confirm</button><button>Reject</button></td>
+    </tr>
+    <tr>
+      <td>Row 4 Cell 1</td>
+      <td>Row 4 Cell 2</td>
+      <td></td>
+      <td><button>Confirm</button><button>Reject</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -16,6 +16,8 @@
 #
 
 class Donor < User
-  has_and_belongs_to_many :clients
+  has_many :clients, through: :donations
   has_many :donations
 end
+
+

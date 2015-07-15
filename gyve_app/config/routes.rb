@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   get '/about', to: 'static_pages#about'
 
-  root to: 'welcomes#index'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get '/home', to: 'clients#index'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

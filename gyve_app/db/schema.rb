@@ -11,38 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713230814) do
+ActiveRecord::Schema.define(version: 20150714200539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string   "f_name",     null: false
-    t.string   "l_name",     null: false
+    t.string   "f_name",        null: false
+    t.string   "l_name",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "gender"
-    t.string   "alias"
+    t.string   "client_alias"
     t.text     "about"
-    t.integer  "zip",        null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "zip",           null: false
+    t.integer  "caseworker_id"
+  end
+
+  create_table "clients_donors", id: false, force: :cascade do |t|
+    t.integer "donor_id",  null: false
+    t.integer "client_id", null: false
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.string "destination", null: false
+    t.string  "destination", null: false
+    t.integer "client_id",   null: false
   end
 
   create_table "donations", force: :cascade do |t|
     t.float    "amount",     default: 0.0, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "donor_id",                 null: false
+    t.integer  "client_id",                null: false
+    t.integer  "goal_id",                  null: false
   end
 
   create_table "goals", force: :cascade do |t|
     t.string   "card_type"
     t.datetime "card_start_date"
     t.float    "cost",            default: 0.0
-    t.float    "funds_raised",    default: 0.0
     t.string   "status"
+    t.integer  "client_id",                     null: false
   end
 
   create_table "users", force: :cascade do |t|

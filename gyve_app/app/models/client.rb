@@ -15,7 +15,7 @@
 
 class Client < ActiveRecord::Base
   belongs_to :caseworker
-  has_and_belongs_to_many :donors
+  has_many :donors, through: :donations
   has_many :goals
   has_many :donations
   has_many :destinations

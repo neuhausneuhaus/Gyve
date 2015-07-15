@@ -1,0 +1,13 @@
+<%= flash[:notice] %>
+
+<div id="login-box">
+  <%= form_tag '/login', :class => 'login_form' do %>
+    <%= label_tag :email %>:<br>
+    <%= text_field_tag :email %><br>
+    <%= label_tag :password %>:<br>
+    <%= password_field_tag :password %><br><br>
+    <div id="login-submit">
+      <%= submit_tag :login %>
+    </div>
+  <% end %>
+</div>

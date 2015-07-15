@@ -5,9 +5,11 @@ class CreateClients < ActiveRecord::Migration
       t.string :l_name, null: false
       t.timestamps null: false
       t.string :gender
-      t.string :alias
+      t.string :client_alias
       t.text :about
       t.integer :zip, null: false
+
+      t.integer :caseworker_id
 
     end
   end

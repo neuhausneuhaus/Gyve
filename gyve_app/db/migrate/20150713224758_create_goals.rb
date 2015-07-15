@@ -4,8 +4,11 @@ class CreateGoals < ActiveRecord::Migration
       t.string :card_type
       t.datetime "card_start_date"
       t.float :cost, default: 0, :scale =>2
-      t.float :funds_raised, default: 0, :scale =>2
+      # t.float :funds_raised, default: 0, :scale =>2
       t.string :status
+
+      t.integer :client_id, null: false
+
     end
   end
 end
