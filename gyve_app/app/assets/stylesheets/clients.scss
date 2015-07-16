@@ -75,7 +75,23 @@
   }
 }
 
-  // -----Progress Bars
+  // -----Column Sorters------
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(../images/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(../images/down_arrow.gif);
+}   
+
+  // -----Progress Bars-------
 .progress-bar-indication {  
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;

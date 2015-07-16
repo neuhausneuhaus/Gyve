@@ -9,6 +9,8 @@ class CreateClients < ActiveRecord::Migration
       t.text :about
       t.integer :zip, null: false
 
+      t.integer :progress, default: 0
+
       t.integer :caseworker_id
 
     end
