@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-  gem 'rails_12factor', group: :production
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -34,11 +34,15 @@ gem 'bcrypt', '~> 3.1.7'
   #I MUSTACHE YOU A QUESTION
   gem 'mustache-js-rails', '~> 1.1.0'
 
+  #Bourbon and bourbon related accessories 
   gem 'bourbon'
 
   gem 'neat', '~> 1.7.2'
 
   gem 'refills'
+
+  # ffaker gem for creating seeds
+  gem 'ffaker', '~> 2.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,9 +56,11 @@ group :development, :test do
   gem 'spring'
 
 
-    # ffaker gem for creating seeds
-    gem 'ffaker', '~> 2.1.0'
 
-  
+ 
 end
 
+  #required for Heroku Deployment:
+  gem 'rails_12factor', group: :production
+
+  ruby "2.2.0"
