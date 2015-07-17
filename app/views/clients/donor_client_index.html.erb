@@ -1,4 +1,5 @@
 <h1>Donor Dashboard</h1>
+
 <p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
 <p><i>Wallet: $<%=current_user.funds_remaining%></i></p>
 <p><i>Donated: $<%=current_user.funds_spent%></i></p>
@@ -19,32 +20,28 @@
           <td><a href="/clients/<%=client.id%>" title="<%=client.client_alias%>"> 
             <%=client.client_alias%>
           </a></td>
-            <!-- if client has goals: -->
             
+            <!-- if client has goals,: -->
             <%if !client.goals.empty?%>
-              <!-- Most iminent goal: -->
+
+              <!-- Most iminent goal is: -->
               <%iminent_goal = client.goals.select{|goal| goal.card_start_date >=Date.current}.sort_by(&:card_start_date).first%>
               
               <td><b><%=iminent_goal.card_type.capitalize%></b> MetroCard <br>by <%=iminent_goal.card_start_date.strftime('%b %-d, %Y')%></td>
-              
-              <!-- sum of all donations on a goal -->
-              <%donation_sum = iminent_goal.donations.inject(0) { |sum, d|sum + d.amount }%>
-              <!-- percent of cost -->
-              <%percent_complete = ((donation_sum.to_f / iminent_goal.cost.to_f) *100.0).round(0)%>
-              <%client.progress = percent_complete%>
+              <!-- progress_calc helper to find progress% & donation sum -->
+              <%stats = progress_calc(iminent_goal)%>
+
+              <%client.progress = stats[:progress]%>
               <%client.save%>
               <td>
                 <div class="progress-bar-indication">
-                  <span class="meter" style="width: <%=percent_complete%>%">
-                    <p><%=percent_complete%>%</p>
+                  <span class="meter" style="width: <%=stats[:progress]%>%">
+                    <p><%=stats[:progress]%>%</p>
                   </span>
                 </div>
-                 (<%=number_to_currency(donation_sum)%>/<%=number_to_currency(iminent_goal.cost)%>)</td>
+                 (<%=number_to_currency(stats[:donation_sum])%>/<%=number_to_currency(iminent_goal.cost)%>)</td>
               <td><button>Donate</button></td>
-            <%elsif client.goals.empty? %>
-              <td>No upcoming Goals</td>
-              <td></td>
-              <td><a href="/clients/<%=client.id%>"><button>Donate</button></a></td>
+
             <%end%>
           
         </tr>

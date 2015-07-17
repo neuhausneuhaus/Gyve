@@ -1,3 +1,13 @@
+
+
 <p>About Me:<%=simple_format client.about%></p>
 
 <p>Zip:<%=client.zip%></p>
+
+<h3>Where I need to go:</h3>
+<ul>
+<%client.destinations.each do |destination|%>
+  <li><%=destination.destination%></li>
+<%end%>
+
+</ul>
