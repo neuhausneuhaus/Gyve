@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     user = User.find_by({email: params[:email]})
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      # session[:user_name] = "#{user.f_name} #{user.l_name}"
+      # session[:type] = user.type
+      # session[:user] = user
       redirect_to "/home"
     else
       #flash error
