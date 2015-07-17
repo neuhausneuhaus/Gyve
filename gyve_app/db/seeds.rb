@@ -41,7 +41,7 @@ client6 = Client.create(f_name: FFaker::Name.first_name, l_name: FFaker::Name.la
 
 c1g1 = client1.goals.create(card_type:'monthly', card_start_date: '2015.9.1', cost:116.50, status: 'open')
 c1g2 = client1.goals.create(card_type:'monthly', card_start_date: '2015.10.1', cost:116.50, status: 'open')
-c1g3 = client1.goals.create(card_type:'monthly', card_start_date: '2015.10.1', cost:116.50, status: 'open')
+c1g3 = client1.goals.create(card_type:'weekly', card_start_date: '2015.11.1', cost:31.00, status: 'open')
 
 c2g1 = client2.goals.create(card_type:'monthly', card_start_date: '2015.10.15', cost:116.50, status: 'open')
 c2g2 = client2.goals.create(card_type:'monthly', card_start_date: '2015.11.15', cost:116.50, status: 'open')

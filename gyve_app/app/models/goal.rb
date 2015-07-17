@@ -14,3 +14,4 @@ class Goal < ActiveRecord::Base
   belongs_to :client, touch: true
   has_many :donations
 end
+
