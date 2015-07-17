@@ -11,5 +11,5 @@ module ApplicationHelper
     percent_complete = ((donation_sum.to_f / goal.cost.to_f) *100.0).round(0)
     {progress: percent_complete, donation_sum: donation_sum}
   end
-
+  
 end

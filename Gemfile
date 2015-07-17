@@ -31,17 +31,21 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
   #=======I MUSTACHE YOU A QUESTION:=======
   gem 'mustache-js-rails', '~> 1.1.0'
 
   #=======Bourbon and bourbon related accessories:=======
+
   gem 'bourbon'
 
   gem 'neat', '~> 1.7.2'
 
   gem 'refills'
 
+
   #=======ffaker gem for creating seeds:=======
+
   gem 'ffaker', '~> 2.1.0'
 
 group :development, :test do
@@ -60,7 +64,9 @@ group :development, :test do
  
 end
 
+
   #=======required for Heroku Deployment:=======
+
   gem 'rails_12factor', group: :production
 
   ruby "2.2.0"
