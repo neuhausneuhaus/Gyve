@@ -9,8 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest, null: false
       t.timestamps null: false
       
-      t.float :funds_remaining, default: 0, :scale =>2
-      t.float :funds_spent, default: 0, :scale =>2
+      t.decimal :funds_remaining, default: 0, :scale =>2, :precision =>7
+      t.decimal :funds_spent, default: 0, :scale =>2, :precision =>7
 
       t.string :agency, default: nil
 

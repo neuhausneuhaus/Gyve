@@ -1,0 +1,10 @@
+
+
+<%= form_for @client do |f| %> 
+<%= f.text_field :f_name %>
+<%= f.text_field :l_name %>
+<%= f.hidden_field :client_alias, value: FFaker::Name.name%>
+<%= f.text_area :about%>
+<%= f.text_field :zip %>
+<%= f.submit%>
+<%end%>

@@ -26,7 +26,29 @@ class ClientsController < ApplicationController
   end
 
 
+  def new
+    @client = Client.new
+    render "new"
+  end
+
+   def create
+    client = Client.new
+    if client.update(new_client_params)
+      redirect_to '/clients/#{client.id}'
+    else
+      redirect_to '/home'
+    end
+  end
+
+
   private
+  def new_client_params
+    params.require(:client).permit(:f_name, :l_name, :alias, :about, :zip)
+  end
+
+
+
+
   def sort_column
     Client.column_names.include?(params[:sort]) ? params[:sort] : "progress"
   end
@@ -34,5 +56,7 @@ class ClientsController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
+
 
 end

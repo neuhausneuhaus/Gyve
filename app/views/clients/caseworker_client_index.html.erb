@@ -1,1 +1,59 @@
 <h1>Caseworker Dashboard</h1>
+
+<p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
+<br>
+
+
+
+
+
+<h1> My <%@clients.count%> Clients: </h1>
+
+<table class="table-minimal pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "client_alias", "Client"%></th>
+      <th>Upcoming Need</th>
+      <th><%= sortable"progress", "Progress"%></th>
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+      <%@clients.each do |client|%>
+      <% cache [client, 'donor/dashboard'] do %>
+        <tr>
+          <td><a href="/clients/<%=client.id%>" title="<%=client.client_alias%>"> 
+            <%=client.client_alias%>
+          </a></td>
+
+            <!-- if client has goals,: -->
+            <%if !client.goals.empty?%>
+
+              <!-- Most iminent goal is: -->
+              <%iminent_goal = client.goals.select{|goal| goal.card_start_date >=Date.current}.sort_by(&:card_start_date).first%>
+              
+              <td><b><%=iminent_goal.card_type.capitalize%></b> MetroCard <br>by <%=iminent_goal.card_start_date.strftime('%b %-d, %Y')%></td>
+              <!-- progress_calc helper to find progress% & donation sum -->
+              <%stats = progress_calc(iminent_goal)%>
+
+              <%client.progress = stats[:progress]%>
+              <%client.save%>
+              <td>
+                <div class="progress-bar-indication">
+                  <span class="meter" style="width: <%=stats[:progress]%>%">
+                    <p><%=stats[:progress]%>%</p>
+                  </span>
+                </div>
+                 (<%=number_to_currency(stats[:donation_sum])%>/<%=number_to_currency(iminent_goal.cost)%>)</td>
+              <td><a href="/clients/<%=client.id%>" title="<%=client.client_alias%>"> 
+                <button>View / Edit</button>
+              </a></td>
+
+            <%end%>
+          
+        </tr>
+        <% end %>
+      <%end%>
+  </tbody>
+</table>
+<hr><a href="/clients/new"><button>Create New Client Profile</button></a>

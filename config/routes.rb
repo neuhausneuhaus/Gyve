@@ -11,10 +11,16 @@ Rails.application.routes.draw do
 
   get '/home', to: 'clients#index'
 
-  get '/clients/:id', to: 'clients#show'
 
   post '/donation', to: 'donations#create'
 
+  resources :clients, :except =>[:index, :show]
+
+  get '/clients/:id', to: 'clients#show'
+
+  # get '/clients/new', to: 'clients#new'
+
+  # post '/clients', to: 'clients#create'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

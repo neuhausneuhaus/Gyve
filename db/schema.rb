@@ -40,32 +40,32 @@ ActiveRecord::Schema.define(version: 20150714200539) do
   end
 
   create_table "donations", force: :cascade do |t|
-    t.float    "amount",     default: 0.0, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "donor_id",                 null: false
-    t.integer  "client_id",                null: false
-    t.integer  "goal_id",                  null: false
+    t.decimal  "amount",     precision: 7, scale: 2, default: 0.0, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "donor_id",                                         null: false
+    t.integer  "client_id",                                        null: false
+    t.integer  "goal_id",                                          null: false
   end
 
   create_table "goals", force: :cascade do |t|
     t.string   "card_type"
     t.datetime "card_start_date"
-    t.float    "cost",            default: 0.0
+    t.decimal  "cost",            precision: 7, scale: 2, default: 0.0
     t.string   "status"
-    t.integer  "client_id",                     null: false
+    t.integer  "client_id",                                             null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "type"
-    t.string   "f_name",                        null: false
-    t.string   "l_name",                        null: false
-    t.string   "email",                         null: false
-    t.string   "password_digest",               null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.float    "funds_remaining", default: 0.0
-    t.float    "funds_spent",     default: 0.0
+    t.string   "f_name",                                                null: false
+    t.string   "l_name",                                                null: false
+    t.string   "email",                                                 null: false
+    t.string   "password_digest",                                       null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.decimal  "funds_remaining", precision: 7, scale: 2, default: 0.0
+    t.decimal  "funds_spent",     precision: 7, scale: 2, default: 0.0
     t.string   "agency"
   end
 

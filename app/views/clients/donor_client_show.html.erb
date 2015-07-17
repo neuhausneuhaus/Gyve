@@ -35,29 +35,42 @@
             </span>
           </div>
           <p><i>(<%=number_to_currency(stats[:donation_sum])%> / <%=number_to_currency(goal.cost)%>)</i></p>
-          <button>Donate</button>
-          <hr>
           
-          <div class="donate_form">
-            <%= form_tag("/donation", method: "post") do %>
-              
-              <%= label_tag(:amount, "Donation Amount:") %>
-              <%= text_field_tag(:amount) %>
-              <%= hidden_field_tag(:donor_id, current_user.id ) %>
-              <%= hidden_field_tag(:client_id, @client.id) %>
-              <%= hidden_field_tag(:goal_id, goal.id) %>
-              
+          <hr>
+        </p>      
+          
+          
 
-              <%= submit_tag("Submit Donation") %>
-            <%end%>
+          <div class="modal">
+            <label for="modal-1">
+                <button class="modal-trigger">Donate</button>
+            </label>
+            <input class="modal-state" id="modal-1" type="checkbox" />
+            <div class="modal-fade-screen">
+              <div class="modal-inner">
+                <div class="modal-close" for="modal-1"></div>
+                <!-- =====DONATE_FORM====== -->
+                  <div class="donate_form">
 
-            
-            
+                    <%= form_tag("/donation", method: "post") do %>
+                        
+                      <%= label_tag(:amount, "Donation Amount:") %>
+                      <%= text_field_tag(:amount) %>
+                      <!-- donation.error -->
+                      <%= hidden_field_tag(:donor_id, current_user.id ) %>
+                      <%= hidden_field_tag(:client_id, @client.id) %>
+                      <%= hidden_field_tag(:goal_id, goal.id) %>
+                      
 
+                      <%= submit_tag("Submit Donation") %>
+                    <%end%>
+                  </div>
+
+              </div>
+            </div>
           </div>
 
-        </p>      
-      </a>
+      </a> <!-- flexbox -->
 
     <%end%>
 
