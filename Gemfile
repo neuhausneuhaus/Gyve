@@ -48,6 +48,10 @@ gem 'bcrypt', '~> 3.1.7'
 
   gem 'ffaker', '~> 2.1.0'
 
+  #=======In_Place_editing========
+
+  gem 'best_in_place', github: 'bernat/best_in_place'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

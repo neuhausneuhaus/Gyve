@@ -1,5 +1,16 @@
 <p>(caseworker version of client show page)</p>
   <h1><%=@client.name%></h1>
+  <h1>ABC!@#</h1>
 
 
-<%= render "client_info", client: @client %>
+
+
+Name: <%= best_in_place @client, :f_name, :as => :input, :nil => "Click me to add first name" %>
+
+<%= best_in_place @client, :l_name, :as => :input, :nil => "Click me to add last name" %>
+<hr>
+Alias: <%= best_in_place @client, :client_alias, :as => :input, :nil => "Click me to add a Client Alias" %>
+<hr>
+Zip:<%= best_in_place @client, :zip, :as => :input, :nil => "Click me to add zip code" %>
+<hr>
+About Me:<br><%= best_in_place @client, :about, :as => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>

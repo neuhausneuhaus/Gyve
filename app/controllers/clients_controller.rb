@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
 
    def create
     client = Client.new
-    if client.update(new_client_params)
+    if client.update(client_params)
       redirect_to '/clients/#{client.id}'
     else
       redirect_to '/home'
@@ -41,9 +41,28 @@ class ClientsController < ApplicationController
   end
 
 
+  def update
+  @client = Client.find params[:id]
+
+    binding.pry
+  respond_to do |format|
+    binding.pry
+    if @client.update(client_params)
+      binding.pry
+      format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
+      format.json { respond_with_bip(@client) }
+    else
+      binding.pry
+      format.html { render :action => "edit" }
+      format.json { respond_with_bip(@client) }
+    end
+  end
+end
+
+
   private
-  def new_client_params
-    params.require(:client).permit(:f_name, :l_name, :alias, :about, :zip)
+  def client_params
+    params.require(:client).permit(:f_name, :l_name, :client_alias, :about, :zip)
   end
 
 
