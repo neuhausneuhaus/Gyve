@@ -44,15 +44,15 @@ class ClientsController < ApplicationController
   def update
   @client = Client.find params[:id]
 
-    binding.pry
+    # binding.pry
   respond_to do |format|
-    binding.pry
+    # binding.pry
     if @client.update(client_params)
-      binding.pry
+      # binding.pry
       format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
       format.json { respond_with_bip(@client) }
     else
-      binding.pry
+      # binding.pry
       format.html { render :action => "edit" }
       format.json { respond_with_bip(@client) }
     end
