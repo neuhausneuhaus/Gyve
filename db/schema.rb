@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20150714200539) do
     t.string   "card_type"
     t.datetime "card_start_date"
     t.decimal  "cost",            precision: 7, scale: 2, default: 0.0
-    t.string   "status"
-    t.integer  "client_id",                                             null: false
+    t.string   "status",                                  default: "open"
+    t.integer  "client_id",                                                null: false
   end
 
   create_table "users", force: :cascade do |t|

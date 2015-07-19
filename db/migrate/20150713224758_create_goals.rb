@@ -5,7 +5,7 @@ class CreateGoals < ActiveRecord::Migration
       t.datetime "card_start_date"
       t.decimal :cost, default: 0, :scale =>2, :precision =>7
       # t.decimal :funds_raised, default: 0, :scale =>2
-      t.string :status
+      t.string :status, default: "open"
 
       t.integer :client_id, null: false
 

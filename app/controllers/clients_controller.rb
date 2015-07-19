@@ -66,8 +66,6 @@ end
   end
 
 
-
-
   def sort_column
     Client.column_names.include?(params[:sort]) ? params[:sort] : "progress"
   end

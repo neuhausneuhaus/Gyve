@@ -1,3 +1,5 @@
+// --------modal----------
+
 $(function() {
   $("#modal-1").on("change", function() {
     if ($(this).is(":checked")) {
@@ -21,3 +23,14 @@ $(function() {
     $modalCheckbox.prop('checked', true).change();
   });
 });
+
+
+// ----------accordion----------
+
+$('.js-accordion-trigger').bind('click', function(e){
+  jQuery(this).parent().find('.submenu').slideToggle('fast');  // apply the toggle to the ul
+  jQuery(this).parent().toggleClass('is-expanded');
+  e.preventDefault();
+});
+
+

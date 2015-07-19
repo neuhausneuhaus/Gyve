@@ -14,3 +14,113 @@ Alias: <%= best_in_place @client, :client_alias, :as => :input, :nil => "Click m
 Zip:<%= best_in_place @client, :zip, :as => :input, :nil => "Click me to add zip code" %>
 <hr>
 About Me:<br><%= best_in_place @client, :about, :as => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
+<div>
+<ul class="accordion">
+  <li>
+    <a href="javascript:void(0)" class="js-accordion-trigger">Accordion Item</a>
+    <ul class="submenu">
+      <li>
+        <a href="javascript:void(0)">Sub Item 1</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Sub Item 2</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="javascript:void(0)" class="js-accordion-trigger">Another Item</a>
+    <ul class="submenu">
+      <li>
+        <a href="javascript:void(0)">Sub Item 1</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Sub Item 2</a>
+      </li>
+    </ul>
+  </li>
+</ul></div>
+
+
+<h1>Places I need to go:</h1>
+<ul>
+<%@client.destinations.each do |destination|%>
+  <li><%=destination.destination%></li>
+<%end%>
+</ul>
+
+<h1>Current Goals:</h1>
+<div class="flex-boxes">
+  
+  <% @client.goals.each do |goal|%>
+    
+    <% if goal.status == "open" %>
+
+      <a href="javascript:void(0)" class="flex-box">
+          <%if goal.card_type == "weekly"%>
+            <img src="<%=asset_path('week64.png')%>" alt="week" style="float: left;">
+          <%elsif goal.card_type == "monthly"%>
+            <img src="<%=asset_path('month64.png')%>" alt="month" style="float: left;">
+          <%end%>
+        <h1 class="flex-title">
+          <b><%=goal.card_start_date.strftime('%b %-d')%></b>,
+          <%=goal.card_start_date.strftime('%Y')%>
+        </h1>
+        <p>
+          <b><%=goal.card_type.capitalize%></b> Metro Card
+          <hr>
+          <%stats = progress_calc(goal)%>
+          <div class="progress-bar-indication">
+            <span class="meter" style="width: <%= stats[:progress]%>%">
+              <p><%= stats[:progress]%>%</p>
+            </span>
+          </div>
+          <p><i>(<%=number_to_currency(stats[:donation_sum])%> / <%=number_to_currency(goal.cost)%>)</i></p>
+        </p>      
+      </a> <!-- flexbox -->
+
+    <%end%>
+  <%end%>
+</div>
+
+
+<!--   create_table "goals", force: :cascade do |t|
+    t.string   "card_type"
+    t.datetime "card_start_date"
+    t.decimal  "cost",            precision: 7, scale: 2, default: 0.0
+    t.string   "status"
+    t.integer  "client_id",                                             null: false
+  end -->
+
+
+<div class="modal">
+  <label for="modal-1">
+      <button class="modal-trigger">Create New Goal</button>
+  </label>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal-fade-screen">
+    <div class="modal-inner">
+      <div class="modal-close" for="modal-1"></div>
+      <!-- =====NEW_GOAL_FORM====== -->
+        <div class="new_goal_form">
+        <%= form_tag("/goal", method: "post") do %>
+                        
+          <%= label_tag(:card_type, "Card Type:") %>
+          <select name="card_type" id="card_type">
+            <option value="weekly">Weekly ($31.00)</option>
+            <option value="monthly">Monthly ($116.50)</option>
+          </select>
+
+          Card Start Date:
+          <input type="date" name="card_start_date">
+
+          <!-- goal.error -->
+          <%= hidden_field_tag(:client_id, @client.id) %>
+          <%= hidden_field_tag(:status, "open") %>
+
+          <%= submit_tag("Create New Goal") %>
+        <%end%>
+        </div>
+
+    </div>
+  </div>
+</div>
