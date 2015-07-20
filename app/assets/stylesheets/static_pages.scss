@@ -15,6 +15,18 @@
     font-size: 1.2em;
     font-weight: 800;
   }
+  .loginlink{
+    font-size: 3em;
+    text-align: right;
+    float:right;
+    font-weight: 900;
+    background-color: rgba(0,0,100,0.1);
+    max-width: 300px;
+    text-decoration: underline;
+    a{
+      color: lightblue;
+      }
+  }
 }
 
 .hero {  
