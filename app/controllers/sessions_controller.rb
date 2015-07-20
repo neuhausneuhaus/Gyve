@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:user_name] = nil
     session[:type] = nil
-    redirect_to '/login'
+    redirect_to '/'
   end
 
 end

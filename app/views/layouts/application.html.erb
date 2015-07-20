@@ -4,11 +4,61 @@
   <title>GyveApp</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag 'application' %>
 </head>
 <body>
+<header class="navigation" role="banner">
+  <div class="brandname">
+  <a href="/home">Gyve.</a>
+  </div>
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="/assets/gyvelogobluefull" alt="Logo Image">
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="/home">Home</a></li>
+        <li class="nav-link"><a href="/home">Dashboard</a></li>
+        <li class="nav-link"><a href="/">About Us</a></li>
+        
+        <% if @current_user.nil?%>
+          <%= link_to 'Log In', login_path%>
+        <% else%>
+          <%= link_to 'Log Out', logout_path, method: 'delete'%>
+        <%end%>
+        
+
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+
+
+
+
 
 <%= yield %>
 
+
+
+<footer class="footer" role="contentinfo">
+<!--   <div class="footer-logo">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
+  </div> -->
+  <div class="footer-links">
+    <ul><li><a><h3>Home</h3></a></li></ul>
+    <ul><li><a><h3>About Gyve</h3></a></li></ul>
+    <ul><li><a><h3>Contact Us</h3></a></li></ul>
+  </div>
+<!-- 
+  <hr> -->
+
+  <p>NeuhausNeuhaus® 2015</p>
+</footer>
+
+
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>

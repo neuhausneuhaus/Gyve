@@ -4,12 +4,12 @@ class GoalsController < ApplicationController
     
     client = Client.find(params[:client_id])
     goal = Goal.new(client: client)
-    binding.pry  
+ 
     if goal.update(new_goal_params)
       # confirm goal created
       redirect_to :back #change to on page confirmation text
     else
-      binding.pry
+      # binding.pry
     redirect_to :back
     #donation.error in view raises error message
     end

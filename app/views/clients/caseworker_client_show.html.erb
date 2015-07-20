@@ -14,38 +14,50 @@ Alias: <%= best_in_place @client, :client_alias, :as => :input, :nil => "Click m
 Zip:<%= best_in_place @client, :zip, :as => :input, :nil => "Click me to add zip code" %>
 <hr>
 About Me:<br><%= best_in_place @client, :about, :as => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel' %>
-<div>
+
 <ul class="accordion">
+
   <li>
-    <a href="javascript:void(0)" class="js-accordion-trigger">Accordion Item</a>
+    <a href="javascript:void(0)" class="js-accordion-trigger"><h1>Places I need to go:</h1></a>
     <ul class="submenu">
-      <li>
-        <a href="javascript:void(0)">Sub Item 1</a>
-      </li>
-      <li>
-        <a href="javascript:void(0)">Sub Item 2</a>
-      </li>
+      <%@client.destinations.each do |destination|%>
+        <li>
+          <a href="javascript:void(0)">
+            <%=destination.destination%>
+          </a>
+        </li>
+      <%end%>
+
+        <li>
+
+          <div class="modal">
+            <label for="modal-1">
+                <button class="modal-trigger">Add New Location</button>
+            </label>
+            <input class="modal-state" id="modal-1" type="checkbox" />
+            <div class="modal-fade-screen">
+              <div class="modal-inner">
+                <div class="modal-close" for="modal-1"></div>
+                <!-- =====NEW_destination_FORM====== -->
+                  <div class="new_destination_form">
+                    <%= form_tag("/destination", method: "post") do %>
+                                    
+                      <%= label_tag(:destination, "Name of destination:") %>
+                      <%= text_field_tag 'destination' %>
+                      <%= hidden_field_tag(:client_id, @client.id) %>
+
+                      <%= submit_tag("Add") %>
+                    <%end%>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+        </li>
+
     </ul>
   </li>
-  <li>
-    <a href="javascript:void(0)" class="js-accordion-trigger">Another Item</a>
-    <ul class="submenu">
-      <li>
-        <a href="javascript:void(0)">Sub Item 1</a>
-      </li>
-      <li>
-        <a href="javascript:void(0)">Sub Item 2</a>
-      </li>
-    </ul>
-  </li>
-</ul></div>
-
-
-<h1>Places I need to go:</h1>
-<ul>
-<%@client.destinations.each do |destination|%>
-  <li><%=destination.destination%></li>
-<%end%>
 </ul>
 
 <h1>Current Goals:</h1>
@@ -93,13 +105,13 @@ About Me:<br><%= best_in_place @client, :about, :as => :textarea, :ok_button => 
 
 
 <div class="modal">
-  <label for="modal-1">
+  <label for="modal-2">
       <button class="modal-trigger">Create New Goal</button>
   </label>
-  <input class="modal-state" id="modal-1" type="checkbox" />
+  <input class="modal-state" id="modal-2" type="checkbox" />
   <div class="modal-fade-screen">
     <div class="modal-inner">
-      <div class="modal-close" for="modal-1"></div>
+      <div class="modal-close" for="modal-2"></div>
       <!-- =====NEW_GOAL_FORM====== -->
         <div class="new_goal_form">
         <%= form_tag("/goal", method: "post") do %>
