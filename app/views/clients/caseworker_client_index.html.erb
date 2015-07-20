@@ -1,13 +1,14 @@
-<h1>Caseworker Dashboard</h1>
-
-<p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
+<h1 class="pagetitle">Caseworker Dashboard</h1>
+<div class="pagesubtitle">
+  <p><b>Welcome, <%=current_user.f_name%> <%=current_user.l_name%></b></p>
+</div>
 <br>
 
 
 
 
 
-<h1> My <%@clients.count%> Clients: </h1>
+<h2> Your <%@clients.count%> Clients: </h2>
 
 <table class="table-minimal pretty">
   <thead>

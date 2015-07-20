@@ -1,9 +1,9 @@
-<h1>Donor Dashboard</h1>
-
-<p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
-<p><i>Wallet: $<%=current_user.funds_remaining%></i></p>
-<p><i>Donated: $<%=current_user.funds_spent%></i></p>
-
+<h1 class="pagetitle">Donor Dashboard</h1>
+<div class="pagesubtitle">
+  <p><b><%=current_user.f_name%> <%=current_user.l_name%></b></p>
+  <p><i>Wallet: $<%=current_user.funds_remaining%></i></p>
+  <p><i>Donated: $<%=current_user.funds_spent%></i></p>
+</div>
 <table class="table-minimal pretty">
   <thead>
     <tr>

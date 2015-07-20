@@ -1,10 +1,17 @@
 
 
-<%= form_for @client do |f| %> 
+<%= form_for @client, method: :post do |f| %> 
+First Name:
 <%= f.text_field :f_name %>
+Last Name:
 <%= f.text_field :l_name %>
-<%= f.hidden_field :client_alias, value: FFaker::Name.name%>
-<%= f.text_area :about%>
+Client's Zip code:
 <%= f.text_field :zip %>
+About:
+<%= f.text_area :about%>
+
+
+<%= f.hidden_field :client_alias, value: FFaker::Name.name%>
+
 <%= f.submit%>
 <%end%>

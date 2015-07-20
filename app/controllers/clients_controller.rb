@@ -31,10 +31,11 @@ class ClientsController < ApplicationController
     render "new"
   end
 
-   def create
+  def create
     client = Client.new
     if client.update(client_params)
-      redirect_to '/clients/#{client.id}'
+      binding.pry
+      redirect_to client_path(client.id)
     else
       redirect_to '/home'
     end
