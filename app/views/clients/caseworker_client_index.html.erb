@@ -24,7 +24,7 @@
       <% cache [client, 'donor/dashboard'] do %>
         <tr>
           <td><a href="/clients/<%=client.id%>" title="<%=client.client_alias%>"> 
-            <%=client.client_alias%>
+            <%=client.f_name%> <%=client.l_name%>
           </a></td>
 
             <!-- if client has goals,: -->
